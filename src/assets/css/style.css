@@ -1,12 +1,12 @@
 :root {
-    --bri-primary: #0052cc;
-    --bri-secondary: #0747a6;
-    --bri-light: #f4f5f7;
+    --bri-primary: #00569E;
+    --bri-secondary: #003d6b;
+    --bri-light: #f8f9fa;
     --bri-dark: #172b4d;
     --bri-success: #36b37e;
     --bri-warning: #ffab00;
     --bri-danger: #ff5630;
-    --bri-gradient: linear-gradient(135deg, #0052cc 0%, #0747a6 100%);
+    --bri-gradient: linear-gradient(135deg, #00569E 0%, #003d6b 100%);
     --bri-gradient-light: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
@@ -20,6 +20,24 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bri-light);
     overflow-x: hidden;
+}
+
+.nav-link.active {
+    background-color: rgba(0, 86, 158, 0.1) !important;
+    color: var(--bri-primary) !important;
+    border-right: 3px solid var(--bri-primary);
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 86, 158, 0.05);
+    color: var(--bri-primary) !important;
+}
+
+@media (max-width: 991.98px) {
+    main {
+        margin-left: 0 !important;
+        width: 100vw !important;
+    }
 }
 
 .login-container {

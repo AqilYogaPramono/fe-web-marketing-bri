@@ -1,16 +1,20 @@
 import React from 'react';
 
-function AdminDashboard() {
+const AdminDashboard = () => {
     return (
-        <div className="dashboard-container">
-            <div className="dashboard-content">
-                <div className="dashboard-header">
-                    <h1 className="dashboard-title">Ini adalah halaman Admin</h1>
-                    <p className="dashboard-subtitle">Selamat datang di Dashboard Admin BRI</p>
+        <div className="container-fluid">
+            <div className="row g-3">
+                <div className="col-12">
+                    <div className="card shadow-sm">
+                        <div className="card-body">
+                            <h5 className="card-title mb-1">Dashboard Admin</h5>
+                            <p className="text-muted mb-0">Ini adalah halaman dashboard</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default AdminDashboard;
