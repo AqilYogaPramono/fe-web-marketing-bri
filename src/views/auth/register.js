@@ -199,7 +199,7 @@ function Register() {
                                 )}
                             </button>
                             <p className="footer-text" style={{ marginTop: '10px', textAlign: 'center' }}>
-                                Sudah punya akun? <Link to="/login" className="text-primary">Masuk</Link>
+                                Sudah punya akun? <Link to="/" className="text-primary">Masuk</Link>
                             </p>
                         </form>
 
