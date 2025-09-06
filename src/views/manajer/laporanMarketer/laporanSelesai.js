@@ -71,6 +71,12 @@ const LaporanSelesai = () => {
     const openImageModal = (imageName) => {
         setSelectedImage(`http://localhost:3001/images/laporanMarketers/${imageName}`);
         setShowImageModal(true);
+        document.body.classList.add('modal-open');
+    };
+
+    const closeImageModal = () => {
+        setShowImageModal(false);
+        document.body.classList.remove('modal-open');
     };
 
     const formatDate = (dateString) => {
@@ -255,21 +261,22 @@ const LaporanSelesai = () => {
                 </div>
             </div>
 
-            <div className={`modal fade laporan-modal ${showImageModal ? 'show' : ''}`} style={{ display: showImageModal ? 'block' : 'none' }} tabIndex="-1">
-                <div className="modal-dialog modal-dialog-centered modal-lg">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">Foto Laporan</h5>
-                            <button type="button" className="btn-close" onClick={() => setShowImageModal(false)}></button>
-                        </div>
-                        <div className="modal-body text-center">
-                            <img src={selectedImage} alt="Foto Laporan" className="img-fluid" style={{ maxHeight: '70vh' }} />
+            {showImageModal && (
+                <div className="modal fade laporan-modal show" style={{ display: 'block' }} tabIndex="-1" onClick={closeImageModal}>
+                    <div className="modal-dialog modal-dialog-centered modal-lg" onClick={(e) => e.stopPropagation()}>
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Foto Laporan</h5>
+                                <button type="button" className="btn-close" onClick={closeImageModal}></button>
+                            </div>
+                            <div className="modal-body text-center">
+                                <img src={selectedImage} alt="Foto Laporan" className="img-fluid" style={{ maxHeight: '70vh' }} />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
 
-            {showImageModal && <div className="modal-backdrop fade show"></div>}
         </div>
     );
 };

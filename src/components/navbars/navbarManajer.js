@@ -80,7 +80,7 @@ const NavbarManajer = ({ onToggleSidebar }) => {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark shadow-sm" style={{ backgroundColor: "#00569E", zIndex: 1030 }}>
+        <nav className="navbar navbar-expand-lg navbar-dark shadow-sm" style={{ position: 'fixed', top: 0, left: 0, right: 0, backgroundColor: "#00569E", zIndex: 1030 }}>
             <div className="container-fluid">
                 <button className="btn btn-link text-white d-lg-none me-2" onClick={onToggleSidebar} aria-label="Toggle sidebar">
                     <i className="bi bi-list fs-4"></i>

@@ -63,7 +63,7 @@ const SidebarManajer = ({ isOpen, onClose }) => {
                     </nav>
                 </div>
             </div>
-            <div className="d-none d-lg-block" style={{ width: '280px', minHeight: 'calc(100vh - 56px)', backgroundColor: 'white', boxShadow: '2px 0 10px rgba(0,0,0,0.1)' }}>
+            <div className="d-none d-lg-block" style={{ position: 'fixed', top: '56px', left: 0, width: '280px', minHeight: 'calc(100vh - 56px)', backgroundColor: 'white', boxShadow: '2px 0 10px rgba(0,0,0,0.1)', zIndex: 1000 }}>
                 <div className="p-0 h-100">
                     <nav className="nav flex-column py-3">
                         <NavLink className="nav-link px-4 py-3 d-flex align-items-center" to="/manajer/dashboard" style={{ color: '#00569E' }}>
