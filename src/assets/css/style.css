@@ -1839,7 +1839,6 @@ main {
 }
 
 .laporan-modal .modal-header {
-    background: linear-gradient(135deg, #00569E 0%, #003d6b 100%);
     color: white;
     border-radius: 12px 12px 0 0;
     border: none;
@@ -1922,4 +1921,32 @@ main {
     left: 0 !important;
     right: 0 !important;
     z-index: 1030 !important;
+}
+
+
+.laporan-modal .modal-header.bg-success {
+    background-color: #28a745 !important;
+}
+
+.laporan-modal .modal-header.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+
+.laporan-modal .modal-header[style*="#28a745"] {
+    background-color: #28a745 !important;
+}
+
+.laporan-modal .modal-header[style*="#dc3545"] {
+    background-color: #dc3545 !important;
+}
+
+.laporan-modal .modal-header.validasi-success {
+    background-color: #28a745 !important;
+    background: #28a745 !important;
+}
+
+.laporan-modal .modal-header.validasi-danger {
+    background-color: #dc3545 !important;
+    background: #dc3545 !important;
 }
