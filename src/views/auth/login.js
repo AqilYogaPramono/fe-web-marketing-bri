@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaUser, FaLock } from 'react-icons/fa';
 import BRI from '../../assets/images/BRI.png';
 import MessagesAuth from '../../components/messages/messagesAuth';
+import '../../assets/js/script.js';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -14,17 +15,18 @@ function Login() {
     const [showMessage, setShowMessage] = useState(false);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (window.AuthUtils && window.AuthUtils.checkTokenExpiry()) {
+            navigate('/admin/dashboard', { replace: true });
+        }
+    }, [navigate]);
+
     const showErrorMessage = (errorMsg) => {
         setMessage(errorMsg);
         setMessageType('error');
         setShowMessage(true);
     };
 
-    const showSuccessMessage = (successMsg) => {
-        setMessage(successMsg);
-        setMessageType('success');
-        setShowMessage(true);
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -77,14 +79,20 @@ function Login() {
                         serverMessage = rawText;
                     }
                 }
-                throw { isServer: true, message: serverMessage };
+                const error = new Error(serverMessage);
+                error.isServer = true;
+                throw error;
             }
 
             const { token } = (result || {});
             if (!token) {
                 throw new Error('Token tidak ditemukan. Coba lagi nanti.');
             }
-            localStorage.setItem('token', token);
+            if (window.AuthUtils) {
+                window.AuthUtils.setToken(token);
+            } else {
+                localStorage.setItem('token', token);
+            }
 
             const payload = JSON.parse(atob(token.split('.')[1]));
             const userType = payload.userType;
@@ -92,10 +100,11 @@ function Login() {
             const normalized = (userType || '').toString();
             if (normalized === 'Admin') {
                 navigate('/admin/dashboard', { replace: true });
-            } else if (normalized === 'Manajer' || normalized === 'Marketer') {
+            } else if (normalized === 'Manajer') {
                 navigate('/manajer/dashboard', { replace: true });
             } else {
-                showSuccessMessage('Login berhasil.');
+                showErrorMessage('Akun tidak memiliki akses ke sistem ini.');
+                return;
             }
 
         } catch (err) {
@@ -111,6 +120,7 @@ function Login() {
             setLoading(false);
         }
     };
+
 
     return (
         <>

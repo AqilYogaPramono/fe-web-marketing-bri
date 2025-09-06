@@ -38,38 +38,7 @@ class MessagesDashboard {
     logout() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.location.href = '/login';
-    }
-
-    // Fungsi untuk mendapatkan pesan dari API
-    async getMessageFromAPI(type, defaultMessage) {
-        try {
-            if (!this.validateToken()) {
-                return defaultMessage;
-            }
-
-            const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:3001/API/messages', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            if (response.status === 401) {
-                this.logout();
-                return defaultMessage;
-            }
-
-            if (response.ok) {
-                const data = await response.json();
-                return data.message || defaultMessage;
-            }
-        } catch (error) {
-            console.error('Error fetching message from API:', error);
-        }
-        return defaultMessage;
+        window.location.href = '/';
     }
 
     createContainer() {
@@ -317,10 +286,7 @@ class MessagesDashboard {
     }
 
     async show(message, type = 'success', duration = 5000) {
-        // Coba ambil pesan dari API, jika gagal gunakan pesan default
-        const finalMessage = await this.getMessageFromAPI(type, message);
-        
-        const messageElement = this.createMessageElement(finalMessage, type);
+        const messageElement = this.createMessageElement(message, type);
         this.container.appendChild(messageElement);
 
         setTimeout(() => {
