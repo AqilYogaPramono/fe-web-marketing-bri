@@ -98,7 +98,13 @@ const NavbarAdmin = ({ onToggleSidebar }) => {
                     <button className="btn btn-outline-light rounded-pill px-3 py-2 d-flex align-items-center gap-2" onClick={() => setOpen(!open)}>
                         <span className="fw-semibold d-none d-md-inline">{username}</span>
                         <span className="fw-semibold d-md-none" style={{ maxWidth: '80px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                            {username.split(' ').map((name, index) => index === 0 ? name : name.charAt(0)).join(' ').toUpperCase()}
+                            {(() => {
+                                const names = username.split(' ');
+                                if (names.length === 1) return names[0];
+                                const firstName = names[0];
+                                const lastNameInitials = names.slice(1).map(name => name.charAt(0)).join('').substring(0, 2);
+                                return `${firstName} ${lastNameInitials}`.toUpperCase();
+                            })()}
                         </span>
                     </button>
                     {open && (

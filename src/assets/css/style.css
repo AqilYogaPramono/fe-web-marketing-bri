@@ -33,6 +33,12 @@ body {
     color: var(--bri-primary) !important;
 }
 
+main {
+    margin-left: 0 !important;
+    width: 100vw !important;
+    padding: 0 !important;
+}
+
 @media (max-width: 991.98px) {
     main {
         margin-left: 0 !important;
