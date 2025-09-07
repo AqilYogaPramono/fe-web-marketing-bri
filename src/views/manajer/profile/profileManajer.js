@@ -129,145 +129,133 @@ const ProfileManajer = () => {
     }
 
     return (
-        <div className="profile-page-container">
-            <div className="container-fluid py-4">
-                <div className="row">
-                    <div className="col-12">
-
-                        {/* Profile Content Cards */}
-                        <div className="row g-4">
-                            {/* Personal Information Card */}
-                            <div className="col-12">
-                                <div className="modern-card">
-                                    <div className="card-header-modern">
-                                        <div className="header-icon">
-                                            <i className="bi bi-person-circle"></i>
-                                        </div>
-                                        <div className="header-content">
-                                            <h3 className="header-title">Informasi Personal</h3>
-                                            <p className="header-subtitle">Kelola data pribadi Anda</p>
-                                        </div>
+        <div className="row g-3">
+            <div className="col-12">
+                <div className="modern-card">
+                    <div className="profile-card-header">
+                        <div className="header-icon">
+                            <i className="bi bi-person-circle"></i>
+                        </div>
+                        <div className="header-content">
+                            <h3 className="header-title">Informasi Personal</h3>
+                            <p className="header-subtitle">Kelola data pribadi Anda</p>
+                        </div>
+                    </div>
+                    <div className="card-body-modern">
+                        {editing ? (
+                            <div className="edit-mode">
+                                <div className="form-group-modern">
+                                    <label className="form-label-modern">
+                                        <i className="bi bi-person me-2"></i>Nama Lengkap
+                                    </label>
+                                    <div className="input-wrapper-modern">
+                                        <input
+                                            type="text"
+                                            className="form-input-modern"
+                                            value={nama}
+                                            onChange={(e) => setNama(e.target.value)}
+                                            disabled={updating}
+                                            placeholder="Masukkan nama lengkap"
+                                        />
+                                        <div className="input-focus-border"></div>
                                     </div>
-                                    <div className="card-body-modern">
-                                        {editing ? (
-                                            <div className="edit-mode">
-                                                <div className="form-group-modern">
-                                                    <label className="form-label-modern">
-                                                        <i className="bi bi-person me-2"></i>Nama Lengkap
-                                                    </label>
-                                                    <div className="input-wrapper-modern">
-                                                        <input
-                                                            type="text"
-                                                            className="form-input-modern"
-                                                            value={nama}
-                                                            onChange={(e) => setNama(e.target.value)}
-                                                            disabled={updating}
-                                                            placeholder="Masukkan nama lengkap"
-                                                        />
-                                                        <div className="input-focus-border"></div>
-                                                    </div>
-                                                </div>
-                                                <div className="action-buttons">
-                                                    <button
-                                                        className="btn-modern btn-primary-modern"
-                                                        onClick={handleUpdateNama}
-                                                        disabled={updating}
-                                                    >
-                                                        {updating ? (
-                                                            <>
-                                                                <span className="spinner-modern"></span>
-                                                                Menyimpan...
-                                                            </>
-                                                        ) : (
-                                                            <>
-                                                                <i className="bi bi-check-circle me-2"></i>
-                                                                Simpan Perubahan
-                                                            </>
-                                                        )}
-                                                    </button>
-                                                    <button
-                                                        className="btn-modern btn-secondary-modern"
-                                                        onClick={handleCancelEdit}
-                                                        disabled={updating}
-                                                    >
-                                                        <i className="bi bi-x-circle me-2"></i>Batal
-                                                    </button>
-                                                </div>
-                                            </div>
+                                </div>
+                                <div className="action-buttons">
+                                    <button
+                                        className="btn-modern btn-primary-modern"
+                                        onClick={handleUpdateNama}
+                                        disabled={updating}
+                                    >
+                                        {updating ? (
+                                            <>
+                                                <span className="spinner-modern"></span>
+                                                Menyimpan...
+                                            </>
                                         ) : (
-                                            <div className="display-mode">
-                                                <div className="info-item-modern">
-                                                    <div className="info-label">
-                                                        <i className="bi bi-person me-2"></i>Nama Lengkap
-                                                    </div>
-                                                    <div className="info-content-modern">
-                                                        <span className="info-value-modern">{profile?.nama || 'Loading...'}</span>
-                                                        <button
-                                                            className="btn-edit-modern"
-                                                            onClick={() => setEditing(true)}
-                                                        >
-                                                            <i className="bi bi-pencil-square"></i>
-                                                            <span>Edit</span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <>
+                                                <i className="bi bi-check-circle me-2"></i>
+                                                Simpan Perubahan
+                                            </>
                                         )}
+                                    </button>
+                                    <button
+                                        className="btn-modern btn-secondary-modern"
+                                        onClick={handleCancelEdit}
+                                        disabled={updating}
+                                    >
+                                        <i className="bi bi-x-circle me-2"></i>Batal
+                                    </button>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="display-mode">
+                                <div className="info-item-modern">
+                                    <div className="info-label">
+                                        <i className="bi bi-person me-2"></i>Nama Lengkap
+                                    </div>
+                                    <div className="info-content-modern">
+                                        <span className="info-value-modern">{profile?.nama || 'Loading...'}</span>
+                                        <button
+                                            className="btn-edit-modern"
+                                            onClick={() => setEditing(true)}
+                                        >
+                                            <i className="bi bi-pencil-square"></i>
+                                            <span>Edit</span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                        )}
+                    </div>
+                </div>
+            </div>
 
-                            {/* Account Settings Card */}
-                            <div className="col-12">
-                                <div className="modern-card">
-                                    <div className="card-header-modern">
-                                        <div className="header-icon">
-                                            <i className="bi bi-gear-fill"></i>
-                                        </div>
-                                        <div className="header-content">
-                                            <h3 className="header-title">Pengaturan Akun</h3>
-                                            <p className="header-subtitle">Kelola keamanan akun Anda</p>
-                                        </div>
+            <div className="col-12">
+                <div className="modern-card">
+                    <div className="settings-card-header">
+                        <div className="header-icon">
+                            <i className="bi bi-gear-fill"></i>
+                        </div>
+                        <div className="header-content">
+                            <h3 className="header-title">Pengaturan Akun</h3>
+                            <p className="header-subtitle">Kelola keamanan akun Anda</p>
+                        </div>
+                    </div>
+                    <div className="card-body-modern">
+                        <div className="row g-3">
+                            <div className="col-12 col-md-6">
+                                <div className="setting-item">
+                                    <div className="setting-icon">
+                                        <i className="bi bi-envelope"></i>
                                     </div>
-                                    <div className="card-body-modern">
-                                        <div className="row g-3">
-                                            <div className="col-12 col-md-6">
-                                                <div className="setting-item">
-                                                    <div className="setting-icon">
-                                                        <i className="bi bi-envelope"></i>
-                                                    </div>
-                                                    <div className="setting-content">
-                                                        <h4 className="setting-title">Update Email</h4>
-                                                        <p className="setting-description">Ubah alamat email Anda</p>
-                                                    </div>
-                                                    <button 
-                                                        className="btn-setting-modern"
-                                                        onClick={() => navigate('/manajer/profile/update-email')}
-                                                    >
-                                                        <i className="bi bi-arrow-right"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            
-                                            <div className="col-12 col-md-6">
-                                                <div className="setting-item">
-                                                    <div className="setting-icon">
-                                                        <i className="bi bi-shield-lock"></i>
-                                                    </div>
-                                                    <div className="setting-content">
-                                                        <h4 className="setting-title">Update Password</h4>
-                                                        <p className="setting-description">Ubah kata sandi Anda</p>
-                                                    </div>
-                                                    <button 
-                                                        className="btn-setting-modern"
-                                                        onClick={() => navigate('/manajer/profile/update-password')}
-                                                    >
-                                                        <i className="bi bi-arrow-right"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div className="setting-content">
+                                        <h4 className="setting-title">Update Email</h4>
+                                        <p className="setting-description">Ubah alamat email Anda</p>
                                     </div>
+                                    <button 
+                                        className="btn-setting-modern"
+                                        onClick={() => navigate('/manajer/profile/update-email')}
+                                    >
+                                        <i className="bi bi-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div className="col-12 col-md-6">
+                                <div className="setting-item">
+                                    <div className="setting-icon">
+                                        <i className="bi bi-shield-lock"></i>
+                                    </div>
+                                    <div className="setting-content">
+                                        <h4 className="setting-title">Update Password</h4>
+                                        <p className="setting-description">Ubah kata sandi Anda</p>
+                                    </div>
+                                    <button 
+                                        className="btn-setting-modern"
+                                        onClick={() => navigate('/manajer/profile/update-password')}
+                                    >
+                                        <i className="bi bi-arrow-right"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
