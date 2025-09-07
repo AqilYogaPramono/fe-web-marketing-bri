@@ -109,7 +109,7 @@ const NavbarManajer = ({ onToggleSidebar }) => {
                     </button>
                     {open && (
                         <div className="dropdown-menu dropdown-menu-end show mt-2 shadow" style={{ right: 0, minWidth: "160px" }}>
-                            <button className="dropdown-item d-flex align-items-center gap-2" onClick={() => {}}>
+                            <button className="dropdown-item d-flex align-items-center gap-2" onClick={() => navigate("/manajer/profile")}>
                                 <i className="bi bi-person"></i>
                                 <span>Profil</span>
                             </button>

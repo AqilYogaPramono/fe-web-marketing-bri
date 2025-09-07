@@ -7,6 +7,9 @@ import Marketer from '../../views/manajer/marketer/marketer';
 import LaporanSelesai from '../../views/manajer/laporanMarketer/laporanSelesai';
 import LaporanTidakValid from '../../views/manajer/laporanMarketer/laporanTidakValid';
 import LaporanProses from '../../views/manajer/laporanMarketer/laporanProses';
+import ProfileManajer from '../../views/manajer/profile/profileManajer';
+import UpdateEmail from '../../views/manajer/profile/updateEmail';
+import UpdatePassword from '../../views/manajer/profile/updatePassword';
 
 const ManajerLayout = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -31,6 +34,9 @@ const ManajerLayout = () => {
                         <Route path="/laporan-selesai" element={<LaporanSelesai />} />
                         <Route path="/laporan-ditolak" element={<LaporanTidakValid />} />
                         <Route path="/laporan-proses" element={<LaporanProses />} />
+                        <Route path="/profile" element={<ProfileManajer />} />
+                        <Route path="/profile/update-email" element={<UpdateEmail />} />
+                        <Route path="/profile/update-password" element={<UpdatePassword />} />
                     </Routes>
                 </main>
             </div>
